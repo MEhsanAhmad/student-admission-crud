@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Student Admission System</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<header>
+
+    <div class="container">
+
+        <h1>
+            Student Admission System
+        </h1>
+
+        <p>
+            HTML + CSS + JavaScript + Node.js + PostgreSQL
+        </p>
+
+    </div>
+
+</header>
+
+
+<main class="container">
+
+
+    <!-- =========================================
+         STUDENT FORM
+    ========================================== -->
+
+    <section class="card">
+
+        <h2 id="formTitle">
+            Add Student
+        </h2>
+
+
+        <form id="studentForm">
+
+
+            <!-- Hidden ID for Edit -->
+
+            <input
+                type="hidden"
+                id="studentId"
+            >
+
+
+            <div class="grid">
+
+
+                <!-- Student Name -->
+
+                <div class="field">
+
+                    <label for="name">
+                        Student Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter student name"
+                        maxlength="100"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Father Name -->
+
+                <div class="field">
+
+                    <label for="father_name">
+                        Father Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="father_name"
+                        placeholder="Enter father name"
+                        maxlength="100"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Email -->
+
+                <div class="field">
+
+                    <label for="email">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="student@example.com"
+                        maxlength="150"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Phone -->
+
+                <div class="field">
+
+                    <label for="phone">
+                        Phone
+                    </label>
+
+                    <input
+                        type="text"
+                        id="phone"
+                        placeholder="03001234567"
+                        maxlength="30"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Date of Birth -->
+
+                <div class="field">
+
+                    <label for="date_of_birth">
+                        Date of Birth
+                    </label>
+
+                    <input
+                        type="date"
+                        id="date_of_birth"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- Gender -->
+
+                <div class="field">
+
+                    <label for="gender">
+                        Gender
+                    </label>
+
+                    <select
+                        id="gender"
+                        required
+                    >
+
+                        <option value="">
+                            Select Gender
+                        </option>
+
+                        <option value="Male">
+                            Male
+                        </option>
+
+                        <option value="Female">
+                            Female
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Course -->
+
+                <div class="field">
+
+                    <label for="course">
+                        Course
+                    </label>
+
+                    <select
+                        id="course"
+                        required
+                    >
+
+                        <option value="">
+                            Select Course
+                        </option>
+
+                        <option value="Computer Science">
+                            Computer Science
+                        </option>
+
+                        <option value="Software Engineering">
+                            Software Engineering
+                        </option>
+
+                        <option value="Information Technology">
+                            Information Technology
+                        </option>
+
+                        <option value="Business Administration">
+                            Business Administration
+                        </option>
+
+                        <option value="Accounting">
+                            Accounting
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Admission Date -->
+
+                <div class="field">
+
+                    <label for="admission_date">
+                        Admission Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="admission_date"
+                    >
+
+                </div>
+
+
+                <!-- Address -->
+
+                <div class="field full">
+
+                    <label for="address">
+                        Address
+                    </label>
+
+                    <textarea
+                        id="address"
+                        rows="4"
+                        placeholder="Enter student address"
+                        required
+                    ></textarea>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- Buttons -->
+
+            <div class="buttons">
+
+                <button
+                    type="submit"
+                    id="submitButton"
+                >
+                    Add Student
+                </button>
+
+
+                <button
+                    type="button"
+                    id="cancelButton"
+                    class="secondary hidden"
+                >
+                    Cancel Edit
+                </button>
+
+            </div>
+
+
+            <p id="message"></p>
+
+
+        </form>
+
+    </section>
+
+
+
+    <!-- =========================================
+         STUDENT TABLE
+    ========================================== -->
+
+    <section class="card">
+
+
+        <div class="table-header">
+
+            <h2>
+                Students
+            </h2>
+
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search students..."
+            >
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+
+            <table>
+
+
+                <thead>
+
+                    <tr>
+
+                        <th>ID</th>
+
+                        <th>Name</th>
+
+                        <th>Father</th>
+
+                        <th>Email</th>
+
+                        <th>Phone</th>
+
+                        <th>Course</th>
+
+                        <th>Admission</th>
+
+                        <th>Actions</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="studentTableBody">
+
+                </tbody>
+
+
+            </table>
+
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+<script src="app.js"></script>
+
+</body>
+
+</html>
